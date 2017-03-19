@@ -1,0 +1,48 @@
+﻿@model RecruitmentPool.Models.PersoonLijstVM
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alle sollicitanten</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nummer</th>
+            <th>Naam</th>
+            <th>Voornaam</th>
+            <th>Email</th>
+            @*<th>Sollicitaties</th>*@
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var persoon in Model.Personen)
+        {
+            <tr>
+                <td>@persoon.IdPersoon</td>
+                <td>@persoon.Naam</td>
+                <td>@persoon.Voornaam</td>
+                <td>@persoon.Email</td>
+                @*<td>@String.Join(", ", persoon.Genres.Select(g => g.Omschrijving))</td>*@
+
+                <td>
+                    @Html.ActionLink(" ", "Verwijderen", "Persoon", new { code = persoon.IdPersoon }, new { @class = "glyphicon glyphicon-trash" })
+
+                    &nbsp;
+                    @Html.ActionLink(" ", "Bewerken", "Persoon", new
+               {
+                   code = persoon.IdPersoon
+               }, new { @class = "glyphicon glyphicon-pencil" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
