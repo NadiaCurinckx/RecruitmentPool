@@ -4,11 +4,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Alle sollicitanten</h2>
 
-<table class="table table-striped table-hover">
+<table id="sollicitanten" class="table table-striped table-hover">
     <thead>
         <tr>
             <th>Nummer</th>
@@ -44,5 +45,11 @@
     </tbody>
 </table>
 
-
-
+@section scripts {
+    <script src="~/Scripts/tablesorter/jquery.tablesorter.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sollicitanten').tablesorter();
+        });
+    </script>
+}
